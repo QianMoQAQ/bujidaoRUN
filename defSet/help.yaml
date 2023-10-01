@@ -1,0 +1,82 @@
+- group: 寄·体力
+  list:
+    - icon: paimon
+      title: '体力'
+      desc: '多账号体力/开拓力查询'
+    - icon: paimon
+      title: '(#/*)(开启/关闭)体力推送(114514)'
+      desc: '(原神/星铁)(开启/关闭)体力推送'
+    - icon: paimon
+      title: '(#/*)体力推送140'
+      desc: '(体力/开拓力)推送阈值'
+- group: 寄·崩坏：星穹铁道
+  list:
+    - icon: paimon
+      title: '*角色 *114514'
+      desc: '查询角色详情'
+    - icon: paimon
+      title: '*(上期/往期)深渊(114514)'
+      desc: '查询混沌回忆数据 '
+    - icon: paimon
+      title: '*(上期/往期)模拟宇宙(114514)'
+      desc: '查询模拟宇宙详情'
+    - icon: paimon
+      title: '*练度统计(123456)'
+      desc: '查询角色数据详情'
+- group: 寄·签到·群友配置
+  list:
+    - icon: paimon
+      title: '签到'
+      desc: '多账号签到'
+    - icon: paimon
+      title: '米游社(原神/··/全部)签到'
+      desc: '社区签到'
+    - icon: paimon
+      title: '(开启/关闭)崩三签到'
+      desc: '是否签到崩三'
+    - icon: paimon
+      title: '设置社区签到(经验/米币)'
+      desc: '社区签到模式'
+    - icon: paimon
+      title: '(#/*/崩三)(禁用/解禁)114514'
+      desc: '(原神/星铁/崩三)禁用uid'
+- group: 寄·主人配置
+  list:
+    - icon: paimon
+      title: '#寄替换'
+      desc: '替换后可本体过码，本体无更新冲突无需替换'
+    - icon: paimon
+      title: '#寄还原'
+      desc: '本体更新冲突时还原后更新'
+    - icon: paimon
+      title: '*武器星级更新(@群友)'
+      desc: '使用星铁功能前使用'
+    - icon: paimon
+      title: '#签到(添加/删除)白名单群(12345)'
+      desc: '请使用锅巴配置'
+    - icon: paimon
+      title: '#签到(添加/删除)白名单(12345)'
+      desc: '添加签到白名QQ'
+    - icon: paimon
+      title: '#社区签到(添加/删除)白名单群(12345)'
+      desc: '请使用锅巴配置'
+    - icon: paimon
+      title: '#社区签到(添加/删除)白名单(12345)'
+      desc: '添加社区签到白名QQ'
+    - icon: paimon
+      title: '#签到(添加/删除)推送(12345)'
+      desc: '请使用锅巴配置'
+    - icon: paimon
+      title: '#社区签到(添加/删除)推送(12345)'
+      desc: '请使用锅巴配置'
+- group: 寄
+  list:
+    - icon: paimon
+      title: '#寄(强制)更新'
+      desc: '插件更新'
+    - icon: paimon
+      title: '#寄更新日志'
+      desc: '插件更新日志'
+    - icon: paimon
+      title: '#寄设置'
+      desc: '部分功能设置'

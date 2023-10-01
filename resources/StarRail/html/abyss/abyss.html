@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <link rel="shortcut icon" href="#" />
+  <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/abyss/abyss.css" />
+  <link rel="preload" href="{{fontsPath}}tttgbnumber.ttf" as="font">
+  <link rel="preload" href="{{genshinPath}}img/other/bg5.png" as="image">
+  <link rel="preload" href="{{genshinPath}}img/other/bg4.png" as="image">
+  <link rel="preload" href="{{genshinPath}}img/other/bg105.png" as="image">
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="page bg9">
+      <div class="border"></div>
+      <div class="header">
+        <div>
+          <div class="uid">ID:{{uid}}</div>
+          <div class="title">忘却之庭·混沌回忆</div>
+        </div>
+        <div class="star">
+          <img src="{{genshinPath}}img/abyss/star.png" />
+          <span>{{list.star_num}}/30</span>
+        </div>
+      </div>
+      <div class="room-list">
+        {{ each list.all_floor_detail val}}
+
+        <div class="floor">
+          <div class="floor-header">
+            <span class="index">{{val.name}}</span>
+            <span
+              class="date">{{val.node_1.challenge_time.year}}-{{val.node_1.challenge_time.month}}-{{val.node_1.challenge_time.day}}
+              {{val.node_1.challenge_time.hour}}:{{val.node_1.challenge_time.minute}}</span>
+          </div>
+          <div class="floor-header">
+            <span class="index">使用轮：{{val.round_num}}</span>
+          </div>
+
+          <div class="content">
+            <div class="role-box">
+              <div class="roles">
+                {{ each val.node_1.avatars v}}
+                <div class="item">
+                  {{ if v.rank>0}}
+                  <span class="life life{{v.rank}}">{{v.rank}}命</span>
+                  {{/if}}
+                  <img class="role_img bg{{v.rarity}}" src="{{v.icon}}" onerror="whenError(this)" />
+                  <div class="desc">Lv.{{v.level}}</div>
+                  <img class="fill_img" src="{{genshinPath}}img/other/fill.png" />
+                </div>
+                {{/each}}
+                <div class="split-text split-text-1">节点1</div>
+              </div>
+              <div class="roles">
+                {{ each val.node_2.avatars v}}
+                <div class="item">
+                  {{ if v.rank>0}}
+                  <span class="life life{{v.rank}}">{{v.rank}}命</span>
+                  {{/if}}
+                  <img class="role_img bg{{v.rarity}}" src="{{v.icon}}" onerror="whenError(this)" />
+                  <div class="desc">Lv.{{v.level}}</div>
+                  <img class="fill_img" src="{{genshinPath}}img/other/fill.png" />
+                </div>
+                {{/each}}
+                <div class="split-text split-text-2">节点2</div>
+              </div>
+            </div>
+            <div class="star-box">
+              <img class="{{if val.star_num<1 }}nostar{{/if}}" src="{{genshinPath}}img/abyss/star.png" />
+              <img class="{{if val.sta_numr<2 }}nostar{{/if}}" src="{{genshinPath}}img/abyss/star.png" />
+              <img class="{{if val.star_num<3 }}nostar{{/if}}" src="{{genshinPath}}img/abyss/star.png" />
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="logo">Created By BujidaoRun</div>
+  </div>
+</body>
+<script type="text/javascript">
+  function whenError(a) {
+    // a.onerror = null;
+    // a.src = "{{_res_path}}/genshin/logo/role/荧.png";
+  }
+</script>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="shortcut icon" href="#" />
+  <link rel="preload" href="{{fontsPath}}HYWH-65W.woff" as="font" type="font/woff">
+  <link rel="preload" href="{{fontsPath}}NZBZ.woff" as="font" type="font/woff">
+  <link rel="preload" href="{{fontsPath}}tttgbnumber.woff" as="font" type="font/woff">
+  <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/admin/common.css" />
+  <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/admin/admin.css" />
+</head>
+
+<body class="elem-hydro default-mode " style=transform:scale(1.4)>
+  <div class="container" id="container">
+    <div class="info_box">
+      <div class="head-box type">
+        <div class="label">寄管理面板(配置文件路径: bujidao/config/config.yaml)</div>
+        <div class="title">#寄设置(可使用锅巴更改更多设置)</div>
+      </div>
+    </div>
+    {{each schema cfgGroup}}
+    <div class="cfg-box">
+      <div class="cfg-group">{{cfgGroup.title}}</div>
+      <ul class="cfg-ul">
+        {{each cfgGroup.cfg cfgItem cfgKey}}
+        <li class="cfg-li">
+          <div class="cfg-line">
+            {{cfgItem.title}}
+            {{if cfgItem.type !== 'cron'}}
+            <span class="cfg-hint"> #寄设置{{cfgItem.key}}
+              {{if cfgItem.type == 'num'}} {{cfgItem.def}}{{else}} 开启/关闭{{/if}}
+            </span>
+            {{/if}}
+            {{if cfgItem.type == 'num' || cfgItem.type == 'cron'}}
+            <div class="cfg-status">{{cfg[cfgKey]}}</div>
+            {{else}}
+            {{if cfg[cfgKey]}}
+            <div class="cfg-status">已开启</div>
+            {{else}}
+            <div class="cfg-status status-off">已关闭</div>
+            {{/if}}
+            {{/if}}
+          </div>
+          {{if cfgItem.desc}}
+          <div class="cfg-desc">{{cfgItem.desc}}</div>
+          {{/if}}
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/each}}
+  </div>
+</body>
+
+</html>

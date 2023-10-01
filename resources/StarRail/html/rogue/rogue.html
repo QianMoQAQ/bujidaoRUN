@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <link rel="shortcut icon" href="#" />
+  <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/rogue/rogue.css" />
+  <link rel="preload" href="{{fontsPath}}tttgbnumber.ttf" as="font">
+  <link rel="preload" href="{{genshinPath}}img/other/bg5.png" as="image">
+  <link rel="preload" href="{{genshinPath}}img/other/bg4.png" as="image">
+  <link rel="preload" href="{{genshinPath}}img/other/bg105.png" as="image">
+  <link rel="preload" href="{{genshinPath}}img/abyss/bg.png" as="image">
+  {{@headStyle}}
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="head_box">
+      <div class="day_text">{{role.nickname}} | Lv.{{role.level}}</div>
+      <div class="id_text">UID: {{uid}}</div>
+      <img class="genshin_logo" src="{{genshinPath}}StarRail/img/other/logo.png" />
+    </div>
+    <div class="data_box">
+      <div class="tab_lable">数据总览</div>
+      {{each line val}}
+      <div class="data_line">
+        {{each val item}}
+        <div class="data_line_item">
+          <div style="color: #0a0a0a;font-size: 20px" class="num">
+            {{item.num}} {{ if item.extra}}<span
+              style="font-size: 18px; color: #757575; margin-left: -4px">/{{item.extra}}</span>{{/if}}
+          </div>
+          <div class="lable">{{item.lable}}</div>
+        </div>
+        {{/each}}
+      </div>
+      {{/each}}
+    </div>
+
+    {{if records.length>0}}
+    {{each records record}}
+    <div class="record">
+      <div class="record-world">
+        <img class="record-world-icon" src="{{pluResPath}}html/rogue/ball.png" />
+        <div>{{record.name}} 难度{{record.difficulty}}</div>
+        <div class="high-score">
+          <div class="high-score-title">当前最高积分</div>
+          <div class="high-score-value">{{record.score}}</div>
+        </div>
+      </div>
+      <div class="record-time">
+        挑战时间： {{record.finish_time.year}}.{{record.finish_time.month}}.{{record.finish_time.day}}
+        {{record.finish_time.hour}}:{{record.finish_time.minute}}:{{record.finish_time.second}}
+      </div>
+      <div class="divider"></div>
+      <div class="record-characters">
+        <div class="record-characters-title">
+          通关使用角色
+        </div>
+        <div class="record-characters-list">
+          {{each record.final_lineup avatar}}
+          <div class="avatar-box">
+            <div class="avatar rarity{{avatar.rarity}}">
+              <div>
+                <img class="avatar-img" src="{{avatar.icon}}" />
+              </div>
+              <div class="avatar-inner"></div>
+              <div class="avatar-banner">
+                等级 {{avatar.level}} | {{avatar.rank}}命
+              </div>
+              <div class="avatar-element" style="border-color: var(--borderColor-{{avatar.element}});">
+                <img src="{{pluResPath}}img/element/{{avatar.element}}.png" />
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      <div class="record-wish">
+        {{each record.base_type_list base}}
+        <div class="record-wish-icon">
+          <img src="{{pluResPath}}img/rogue/{{base.name.slice(1,3)}}.webp" />
+        </div>
+        <div class="circle-3">
+          {{base.cnt}}
+        </div>
+        {{/each}}
+      </div>
+      <div class="record-wish-detail">
+        <div class="record-wish-detail-header">
+          <span>获得祝福</span>
+        </div>
+        {{each record.buffs buff}}
+        <div class="record-wish-detail-content">
+          <div class="record-wish-detail-content-left">
+            <div class="record-wish-icon">
+              <img src="{{pluResPath}}img/rogue/{{buff.base_type.name.slice(1,3)}}.webp" />
+            </div>
+            <div class="record-wish-detail-content-left-title">
+              {{buff.base_type.name}}:
+            </div>
+          </div>
+          <div class="record-wish-detail-content-right">
+            {{each buff.items item}}
+            <div class="record-wish-detail-content-items-{{item.rank}}">
+              <div class="record-wish-detail-content-items-content"> {{item.name}} </div>
+              {{if item.is_evoluted }}
+              <div class="record-wish-detail-content-items-content-badge">
+                已升级
+              </div>
+              {{/if}}
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      <div class="record-wish-detail">
+        <div class="record-wish-detail-header">
+          <span>获得奇物</span>
+        </div>
+        <div class="record-wish-detail-content">
+          {{each record.miracles miracle}}
+          <div class="qiwu">
+            <img src="{{miracle.icon}}" />
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    {{/each}}
+    {{/if}}
+    <div class="logo">Created By BujidaoRun</div>
+  </div>
+</body>
+
+</html>

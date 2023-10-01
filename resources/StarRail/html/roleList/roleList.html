@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <link rel="shortcut icon" href="#" />
+  <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/roleList/roleList.css" />
+  <link rel="preload" href="{{fontsPath}}tttgbnumber.ttf" as="font">
+  {{@headStyle}}
+</head>
+
+<body id="container" class="body_box">
+  <div class="container weapon_mode">
+    <div class="info_box">
+      <div class="head_box">
+        <div class="id_text">
+          ID: {{uid}}
+        </div>
+        <div class="lable">共{{avatars.length}}名角色</div>
+        <img class="genshin_logo" src="{{genshinPath}}StarRail/img/other/logo.png" />
+      </div>
+
+      <div class="data_box">
+        <div class="tab_lable for_weapon">角色详情列表</div>
+        <div class="talent_list">
+          <div class="avatar th">
+            <div class="index">#</div>
+            <div class="name">角色</div>
+            <div class="lvl">等级</div>
+            <div class="cons">命座</div>
+            <div class="talent">普攻</div>
+            <div class="talent">战技</div>
+            <div class="talent">终结</div>
+            <div class="talent">天赋</div>
+            <div class="weapon for_weapon">武器</div>
+          </div>
+          {{each avatars avatar idx}}
+          <div class="avatar">
+            <div class="index star{{avatar.rarity}}">{{idx+1}}</div>
+            <div class="name_cont star{{avatar.rarity}}">
+              <div class="name">
+                <div class="avatar_img">
+                  <img src="{{avatar.roleImg}}" />
+                </div>
+                <div class="avatar_name">
+                  {{avatar.name}}
+                </div>
+              </div>
+            </div>
+            <div class="lvl lvl{{avatar.level}}">{{avatar.level}}</div>
+            <div class="cons"><span class="life{{avatar.rank}}">{{avatar.rank}}</span></div>
+            <div class="talent lv{{avatar.a_lvl}} {{avatar.a_plus ? 'talent_plus':''}}">{{avatar.a}}</div>
+            <div class="talent lv{{avatar.e_lvl}} {{avatar.e_plus ? 'talent_plus':''}}">{{avatar.e}}</div>
+            <div class="talent lv{{avatar.q_lvl}} {{avatar.q_plus ? 'talent_plus':''}}">{{avatar.q}}</div>
+            <div class="talent lv{{avatar.w_lvl}} {{avatar.w_plus ? 'talent_plus':''}}">{{avatar.w}}</div>
+            <div class="weapon for_weapon weapon_{{avatar.equip_rarity}}">
+              {{if avatar.equip}}
+              <div class="weapon_box">
+
+                <span class="weapon_lv">Lv{{avatar.equip.level}}</span>
+
+                <span class="weapon_alv weapon_alv_{{avatar.equip.rank}}">{{avatar.equip.rank}}</span>
+                <img src="{{avatar.weaponImg}}" />
+                <span class="weapon_name">{{avatar.equip.name}}</span>
+              </div>
+              {{/if}}
+            </div>
+          </div>
+          {{/each}}
+        </div>
+        <p class="talent_notice">{{talentNotice}}</p>
+      </div>
+      <div class="logo">Created By BujidaoRun</div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+#角色数
+avatar: 30
+#成就
+achievement: 454
+#战利品
+chest: 344
+#模拟宇宙技能树激活
+skill_points: 0
+#模拟宇宙解锁奇物
+miracle: 0
+#模拟宇宙解锁祝福
+buff: 0

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <link rel="shortcut icon" href="#" />
+  <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/roleIndex/roleIndex.css" />
+  <link rel="preload" href="{{fontsPath}}tttgbnumber.ttf" as="font">
+  <link rel="preload" href="{{genshinPath}}img/other/bg5.png" as="image">
+  <link rel="preload" href="{{genshinPath}}img/other/bg4.png" as="image">
+  <link rel="preload" href="{{genshinPath}}img/other/bg105.png" as="image">
+  <link rel="preload" href="{{genshinPath}}img/abyss/bg.png" as="image">
+  {{@headStyle}}
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="head_box">
+      <div class="id_text">UID: {{uid}}</div>
+      <div class="day_text">{{activeDay}}</div>
+      <img class="genshin_logo" src="{{genshinPath}}StarRail/img/other/logo.png" />
+    </div>
+    <div class="data_box">
+      <div class="tab_lable">数据总览</div>
+      {{each line val}}
+      <div class="data_line">
+        {{each val item}}
+        <div class="data_line_item">
+          <div style="color:{{ item.color }};font-size:20px" class="num">
+            {{item.num}} {{ if item.extra}}<span
+              style="font-size: 16px; color: #757575; margin-left: -4px">/{{item.extra}}</span>{{/if}}
+          </div>
+          <div class="lable">{{item.lable}}</div>
+        </div>
+        {{/each}}
+      </div>
+      {{/each}}
+    </div>
+
+    {{if avatars.length>0}}
+    <div class="avatars_box">
+      <div class="tab_lable">我的角色</div>
+      {{each avatars val}}
+      <div class="item">
+        <div class="role_box">
+          {{ if val.rank>0}}
+          <span class="life life{{val.rank}}"> {{val.rank}}命</span>
+          {{/if}}
+          <div class="bg{{val.rarity}}"></div>
+          <img class="role_img" src="{{val.icon}}" />
+          <div class="desc">Lv.{{val.level}}</div>
+        </div>
+        <div class="text_box">
+          <div class="weapon_box">
+            {{if val.equip}}
+            <div class="weapon_boder">
+              <img class="weapon_img" src="{{val.equip.icon}}" />
+            </div>
+            {{/if}}
+          </div>
+          <div class="weapon_name_box">
+            {{if val.equip}}
+            <div class="weapon_name">{{val.equip.name}}</div>
+            <div class="weapon_level">
+              Lv.{{val.equip.level}}{{ if val.equip.rank>1}}<span class="weapon_affix">{{val.equip.rank}}</span>{{/if}}
+            </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+    {{/if}} {{if abyss.has_data}}
+    <div class="abyss_box">
+      <div class="row">
+        <div class="item">
+          <div>开始：{{abyss.begin_time.year}}-{{abyss.begin_time.month}}-{{abyss.begin_time.day}}</div>
+          <div>结算：{{abyss.end_time.year}}-{{abyss.end_time.month}}-{{abyss.end_time.day}}</div>
+        </div>
+        <div class="item">
+          <div>最深抵达：{{abyss.max_floor}}</div>
+          <div>星数：{{abyss.star_num}}</div>
+        </div>
+      </div>
+      <div class="role">
+        <div class="title">出战角色</div>
+        <div class="list">
+          {{each abyss.list val}}
+          <div class="item">
+            {{ if val.rank>0}}
+            <span class="life life{{val.rank}}">{{val.rank}}命</span>
+            {{/if}}
+            <img class="role_img bg{{val.rarity}}" src="{{val.icon}}" />
+            <div class="desc">{{val.value}}次</div>
+            <img class="fill_img" src="{{genshinPath}}img/other/fill.png" />
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      <div style="height: 10px;"></div>
+    </div>
+    {{/if}}
+    <div class="logo">Created By BujidaoRun</div>
+  </div>
+</body>
+
+</html>
